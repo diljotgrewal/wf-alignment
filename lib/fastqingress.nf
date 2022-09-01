@@ -12,7 +12,7 @@ process handleSingleFile {
         def reads_dir = 'reads_dir'
     """
     mkdir $name
-    mv $reads $name
+    cp -L $reads $name/
     """
 }
 
