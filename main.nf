@@ -35,7 +35,7 @@ process fastcatUncompress {
         path "*.fastq.gz", emit: fastq
         env SAMPLE_ID, emit: sample_id
     """
-    fastcat -H -s ${meta.sample_id} -r temp.stats -x ${directory} > ${meta.sample_id}.reads.fastq
+    zcat ${directory}/*.fastq.gz > ${meta.sample_id}.reads.fastq
     gzip ${meta.sample_id}.reads.fastq
     SAMPLE_ID="${meta.sample_id}"
     """
