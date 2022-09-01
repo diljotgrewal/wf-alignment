@@ -35,8 +35,7 @@ process fastcatUncompress {
         path "*.fastq.gz", emit: fastq
         env SAMPLE_ID, emit: sample_id
     """
-    zcat ${directory}/*.fastq.gz > ${meta.sample_id}.reads.fastq
-    gzip ${meta.sample_id}.reads.fastq
+    cp ${directory}/* ${meta.sample_id}.reads.fastq.gz
     SAMPLE_ID="${meta.sample_id}"
     """
 }
